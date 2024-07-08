@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineGuia360</title>
+    <link rel="icon" href="img/Icono/icono360.ico">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="EstilosReg.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">            
+            <p class="logo animate__heartBeat">
+                <img class="logo-centrado" src="img/Icono/icono360.png" alt="CineGuia360" height="70" width="70">
+                <a href="indexCineGuia360.html">CINEGUÍA 360</a>                                        
+            </p>
+        </div>
+    </header>
+<section>
+    <form id="formulario" enctype="multipart/form-data">
+         <h2>Altas</h2><br>
+         <br>
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo" required><br>
+
+        <label for="genero">Género:</label>
+        <input type="text" id="genero" name="genero" required><br>
+
+        <label for="puntuacion">Puntuación:</label>
+        <input type="number" min="1" max="5" step="1" id="precio" name="puntuacion" required><br>
+
+        <label for="date">Fecha de estreno:</label>
+        <input type="date" id="date" name="date"><br><br>
+        
+        <label for="cantidadVeces">Cantidad de veces vista:</label>
+        <input type="number" step="1" id="cantidadVeces" name="cantidadVeces">
+        
+        <button type="submit">Agregar Película</button>
+        <a href="indexCineguia360.html">Menu principal</a>
+    </form>
+
+</section>
+<script>
+    // const URL = "http://127.0.0.1:5000/"
+
+    //Al subir al servidor, deberá utilizarse la siguiente ruta. USUARIO debe ser reemplazado por el nombre de usuario de Pythonanywhere
+    //const URL = "https://USUARIO.pythonanywhere.com/"
+    
+
+    // Capturamos el evento de envío del formulario
+    document.getElementById('formulario').addEventListener('submit', function (event) {
+        event.preventDefault(); // Evitamos que se envie el form 
+
+        var formData = new FormData(this);
+
+        // Realizamos la solicitud POST al servidor
+        fetch(URL + 'peliculas', {
+            method: 'POST',
+            body: formData // Aquí enviamos formData. Dado que formData puede contener archivos, no se utiliza JSON.
+        })
+
+        //Después de realizar la solicitud POST, se utiliza el método then() para manejar la respuesta del servidor.
+        .then(function (response) {
+                if (response.ok) { 
+                    //Si la respuesta es exitosa, convierte los datos de la respuesta a formato JSON.
+                    return response.json(); 
+                } else {
+                    // Si hubo un error, lanzar explícitamente una excepción
+                    // para ser "catcheada" más adelante
+                    throw new Error('Error al agregar la película.');
+                }
+        })
+
+            //Respuesta OK, muestra una alerta informando que la película se agregó correctamente y limpia los campos del formulario para que puedan ser utilizados para una nueva película.
+            .then(function (data) {
+                alert('Película agregada correctamente.');
+            })
+
+            // En caso de error, mostramos una alerta con un mensaje de error.
+            .catch(function (error) {
+                alert('Error al agregar la película.');
+            })
+
+            // Limpiar el formulario en ambos casos (éxito o error)
+            .finally(function () {
+                document.getElementById('titulo').value = "";
+                document.getElementById('genero').value = "";
+                document.getElementById('puntuacion').value = "";
+                document.getElementById('date').value = "";
+                document.getElementById('cantidadVeces').value = "";
+            });
+    })
+</script>
+</body>
+</html>

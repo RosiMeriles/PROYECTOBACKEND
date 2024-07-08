@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineGuia360</title>
+    <link rel="icon" href="img/Icono/icono360.ico">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="EstilosReg.css">
+    <link rel="stylesheet" href="estilostablas.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">            
+            <p class="logo animate__heartBeat">
+                <img class="logo-centrado" src="img/Icono/icono360.png" alt="CineGuia360" height="70" width="70">
+                <a href="indexCineGuia360.html">CINEGUÍA 360</a>                                  
+            </p>
+        </div>
+    </header>
+    <section>
+        <div class="container">
+            <h1>Eliminar películas de mi lista</h1>
+        </div>
+       
+       <div>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Título</th>
+                    <th>Genero</th>              
+                    <th align="right">Puntuación</th>
+                    <th>Fecha de estreno</th>
+                    <th align="center">Veces vista</th>        
+                <tr>                
+            </thead>
+            <tbody id="tablaPeliculas"> </tbody>
+       </table><br>
+       </div>
+
+       <div>
+        <a href="indexCineguia360.html">Menu principal</a>
+       </div>
+
+    </section>
+
+
+    <script>
+        const URL = "http://127.0.0.1:5000/"
+
+        // Al subir al servidor, deberá utilizarse la siguiente ruta. USUARIO debe ser reemplazado por el nombre de usuario de Pythonanywhere
+        //const URL = "https://USUARIO.pythonanywhere.com/"
+        
+
+        // Realizamos la solicitud GET al servidor para obtener todas las películas.
+        fetch(URL + 'peliculas') //http://127.0.0.1:5000/peliculas
+            .then(function (response) {
+                if (response.ok) {
+                    //Si la respuesta es exitosa (response.ok), convierte el cuerpo de la respuesta de formato JSON a un objeto JavaScript y pasa estos datos a la siguiente promesa then.
+                    return response.json(); 
+            } else {
+                    // Si hubo un error, lanzar explícitamente una excepción para ser "catcheada" más adelante
+                    throw new Error('Error al obtener las peliculas.');
+                }
+            })
+
+            //Esta función maneja los datos convertidos del JSON.
+            .then(function (data) {
+                let tablaPeliculas = document.getElementById('tablaPeliculas'); //Selecciona el elemento del DOM donde se mostrarán las películas.
+
+                // Iteramos sobre cada película y agregamos filas a la tabla
+                for (let pelicula of data) {
+                    let fila = document.createElement('tr'); //Crea una nueva fila de tabla (<tr>) para cada película.
+                    fila.innerHTML = '<td>' + pelicula.codigo + '</td>' +
+                        '<td>' + pelicula.titulo + '</td>' +
+                        '<td align="center">' + pelicula.genero + '</td>' +
+                        '<td align="right">' + pelicula.puntuacion + '</td>' +
+                        '<td align="right">' + pelicula.date + '</td>' +
+                        '<td align="right">' + pelicula.cantidadVeces + '</td>' +
+                        // Mostrar miniatura de la imagen
+                        // '<td><img src=static/imagenes/' + producto.imagen_url +' alt="Imagen del producto" style="width: 100px;"></td>' + '<td align="right">' + producto.proveedor + '</td>';
+                        
+                        //Al subir al servidor, deberá utilizarse la siguiente ruta. USUARIO debe ser reemplazado por el nombre de usuario de Pythonanywhere
+                        //'<td><img src=https://www.pythonanywhere.com/user/USUARIO/files/home/USUARIO/mysite/static/imagenes/' + producto.imagen_url +' alt="Imagen del producto" style="width: 100px;"></td>' + '<td align="right">' + producto.proveedor + '</td>';
+                    
+                    //Una vez que se crea la fila con el contenido de la película, se agrega a la tabla utilizando el método appendChild del elemento tablaPeliculas.
+                    tablaPeliculas.appendChild(fila);
+                }
+            })
+
+            //Captura y maneja errores, mostrando una alerta en caso de error al obtener las películas.
+            .catch(function (error) {
+                // Código para manejar errores
+                alert('Error al obtener las peliculas.');
+            });
+    </script>
+</body>
+</html>

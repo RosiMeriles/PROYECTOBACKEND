@@ -1,0 +1,282 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    background-color:white;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;;
+}
+h1{
+    font-size: 4em;
+}
+h2{
+    font-size: 3em;
+}
+h3{
+    font-size: 3em;
+}
+p{
+    font-size: 1.5em;
+}
+button{
+    font-size: 2em;
+    font-weight: bold;
+    border-radius: 10%;
+    padding: 10px 10px;
+    box-shadow: 2px 4px 10px #344C64;
+    color:white;
+    background-color: #3b0d81 ;
+
+}
+button:hover{
+    background-color: #280858;
+}
+
+.container{
+    max-width: 1400px;
+    margin: auto;
+}
+header .logo{
+    margin: 0;
+    padding: 20px 25px;
+    font-weight: bold;
+    color: #3b0d81;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+header .container{
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+
+}
+header{
+    background-color: rgb(233, 233, 233);
+}
+header nav{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+header a{
+    text-decoration: none;
+    padding: 5px 12px;
+    font-weight: bold;
+    color: black;
+}
+header a:hover{
+    color:#7227e1;
+}
+
+/* #image1{
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    height: 90vh;
+    background-image: linear-gradient(0deg,rgba(0,0,0,0.5),rgba(0,0,0,0.5))
+    , url("img/imagenesNuevas/cine1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+
+}
+
+#sobre-nosotros{
+    padding: 50px 12px;
+    text-align: center;
+}
+#recomendados{
+    background-color: rgb(34, 31, 56);
+    color: white;
+    text-align: center;
+}
+
+#recomendados .container{
+padding: 100px 12px;
+}
+#recomendados p{
+    display: none;
+}
+#recomendados h2{
+    margin-top: 0;
+}
+
+#recomendados .carta{
+    background-position: center center;
+    background-size: cover;
+    padding: 50px 0px;
+    margin: 30px;
+    border-radius: 15px;
+}
+
+.carta:first-child{
+    background-image: linear-gradient(
+        0deg,
+        rgba(0,0,0,0.5),
+        rgba(0,0,0,0.5)
+    )
+    ,url("img/imagenesNuevas/climax.jpg");
+
+}
+
+.carta:nth-child(2){
+    background-image: linear-gradient(
+        0deg,
+        rgba(0,0,0,0.5),
+        rgba(0,0,0,0.5)
+    )
+    ,url("img/imagenesNuevas/Afiche-Star-wars.jpg");
+}
+.carta:nth-child(3){
+    background-image: linear-gradient(
+        0deg,
+        rgba(0,0,0,0.5),
+        rgba(0,0,0,0.5)
+    )
+    ,url("img/imagenesNuevas/Close-664164941-large.jpg");
+}
+.carta:nth-child(4){
+    background-image: linear-gradient(
+        0deg,
+        rgba(0,0,0,0.5),
+        rgba(0,0,0,0.5)
+    )
+    ,url("img/imagenesNuevas/Djangosincadenas.webp");
+}
+.carta:nth-child(5){
+    background-image: linear-gradient(
+        0deg,
+        rgba(0,0,0,0.5),
+        rgba(0,0,0,0.5)
+    )
+    ,url("img/imagenesNuevas/MV5BYmRlNTJkMDMtNTAwOS00MThjLThiODItMzE2ZTM1MzdlYWYwXkEyXkFqcGdeQXVyMTA0MjU0Ng@@._V1_.jpg");
+}
+
+footer .container{
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+}
+footer p{
+    padding: 10px;
+    font-size: 20px;
+    margin:0;
+    color: #577B8D ;
+} */
+@media (min-width:720px){
+
+header .container{
+    flex-direction: row;
+    justify-content: space-between;
+}
+header nav{
+    flex-direction: row;
+    padding-bottom: 0;
+}
+header{
+    position: fixed;
+    width: 100%;
+}
+
+/* #sobre-nosotros{
+    padding: 50px 12px;
+    text-align: center;
+}
+#recomendados .peliculas{
+    display: flex;
+    justify-content: center;
+}
+#recomendados .carta{
+    height: 300px;
+    width: 200px;
+    
+}
+#recomendados .carta button{
+    margin-top: 130%;
+
+}
+}
+@media (max-width: 600px){
+    h1{
+        font-size: 2.5em;
+    }
+    h2{
+        font-size: 2em;
+    }
+    h3{
+        font-size: 1.75em;
+    }
+    p{
+        font-size: 1em;
+    }
+    button{
+        font-size: 1.25em;
+    }
+    header .logo{
+        padding: 15px 20px;
+        font-size: 1.5em;
+    }
+    #image1{
+        height: 50vh;
+        padding: 20px;
+    }
+    #recomendados .container{
+        padding: 50px 12px;
+    }
+    #recomendados .carta{
+        margin: 20px;
+        padding: 30px 0;
+    }
+    footer .container{
+        height: 100px;
+    }
+    footer p{
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 400px) {
+    h1 {
+        font-size: 2em;
+    }
+    h2 {
+        font-size: 1.5em;
+    }
+    h3 {
+        font-size: 1.25em;
+    }
+    p {
+        font-size: 0.9em;
+    }
+    button {
+        font-size: 1em;
+        padding: 8px 8px;
+    }
+    header .logo {
+        padding: 10px 15px;
+        font-size: 1.25em;
+    }
+    #image1 {
+        height: 40vh;
+        padding: 15px;
+    }
+    #recomendados .container {
+        padding: 40px 12px;
+    }
+    #recomendados .carta {
+        margin: 15px;
+        padding: 20px 0;
+    }
+    footer .container {
+        height: 80px;
+    }
+    footer p {
+        font-size: 14px;
+    } */
+}
