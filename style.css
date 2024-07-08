@@ -66,10 +66,10 @@ header a{
     color: black;
 }
 header a:hover{
-    color:#7227e1;
+    color:#3b0d81;
 }
 
-/* #image1{
+#image1{
     color: white;
     display: flex;
     align-items: center;
@@ -168,7 +168,7 @@ footer p{
     font-size: 20px;
     margin:0;
     color: #577B8D ;
-} */
+}
 @media (min-width:720px){
 
 header .container{
@@ -184,7 +184,7 @@ header{
     width: 100%;
 }
 
-/* #sobre-nosotros{
+#sobre-nosotros{
     padding: 50px 12px;
     text-align: center;
 }
@@ -278,5 +278,5 @@ header{
     }
     footer p {
         font-size: 14px;
-    } */
+    }
 }

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/Icono/icono360.ico">
+    <title>CineGuía360</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <p class="logo animate__heartBeat">
+                <a href="index.html">CINEGUÍA 360</a>
+            </p>
+            <nav class="navbar">
+                <a href="Login.html">Login</a>
+                <a href="Registrarse.html">Registro</a>
+                <a href="#sobre-nosotros">Sobre Nosotros</a>
+                <a href="indexCineguia360.html">Modificar Peliculas</a>
+                
+            </nav>
+        </div>
+    </header>
+
+    <section id="image1">
+        <div class="container">
+            <h1>Descubre un mundo de películas  <br></h1><br><br>
+            <button>Entrar!</button>
+        </div>
+    </section>
+
+    <section id="sobre-nosotros">
+        <div class="container">
+            <div class="imaage-container"></div>
+            <h2>CineGuía 360!</h2>
+            <p>Al igual que vos, somos fanáticos del cine, aquí encontrarás tanto recursos de streaming como información y rating de las películas que te interesan</p>
+        </div>
+    </section>
+
+    <section id="usuarios-conectados">
+        <div class="container">
+            <h2>Usuarios Conectados</h2>
+            <div class="usuarios-container">
+                <!-- Aquí se mostrarán los usuarios conectados dinámicamente -->
+            </div>
+        </div>
+    </section>
+
+    <section id="recomendados">
+        <div class="container">
+            <h2>Recomendadas</h2>
+            <div class="peliculas">
+                <div class="carta">
+                    <h3></h3>
+                    <button>Info</button>
+                </div>
+                <div class="carta">
+                    <h3></h3>
+                    <button>Info</button>
+                </div>
+                <div class="carta">
+                    <h3></h3>
+                    <button>Info</button>
+                </div>
+                <div class="carta">
+                    <h3></h3>
+                    <button>Info</button>
+                </div>
+                <div class="carta">
+                    <h3></h3>
+                    <button>Info</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>
+                codo a codo 2024
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        document.getElementById('toggleUsuariosBtn').addEventListener('click', function() {
+            document.getElementById('usuarios-conectados').classList.toggle('show');
+        });
+    </script>
+</body>
+</html>
