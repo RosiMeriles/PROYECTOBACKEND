@@ -147,8 +147,8 @@ def listar_pelicula():
 #--------------------------------------------------------------------
 # Mostrar una sola película según su código
 #--------------------------------------------------------------------
-#La ruta Flask /productos/<int:codigo> con el método HTTP GET está diseñada para proporcionar los detalles de un producto específico basado en su código.
-#El método busca en la base de datos el producto con el código especificado y devuelve un JSON con los detalles del producto si lo encuentra, o None si no lo encuentra.
+#La ruta Flask /peliculas/<int:codigo> con el método HTTP GET está diseñada para proporcionar los detalles de una película específica basado en su código.
+#El método busca en la base de datos la pelicula con el código especificado y devuelve un JSON con los detalles de la pelicula si la encuentra, o None si no la encuentra.
 @app.route("/peliculas/<int:codigo>", methods=["GET"])
 def mostrar_pelicula(codigo):
     pelicula = catalogo.consultar_pelicula(codigo)
@@ -195,7 +195,7 @@ def agregar_pelicula():
 #--------------------------------------------------------------------
 @app.route("/peliculas/<int:codigo>", methods=["PUT"])
 #La ruta Flask /peliculas/<int:codigo> con el método HTTP PUT está diseñada para actualizar la información de una película existente en la base de datos, identificado por su código.
-#La función modificar_producto se asocia con esta URL y es invocada cuando se realiza una solicitud PUT a /películas/ seguido de un número (el código de la película).
+#La función modificar_película se asocia con esta URL y es invocada cuando se realiza una solicitud PUT a /películas/ seguido de un número (el código de la película).
 def modificar_pelicula(codigo):
     #Se recuperan los nuevos datos del formulario
     nuevo_titulo = request.form.get("titulo")
