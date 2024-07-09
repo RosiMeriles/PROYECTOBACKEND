@@ -70,7 +70,7 @@ class Catalogo:
           VALUES (%s, %s, %s, %s, %s)"""
         valores = (titulo, genero, puntuacion, date, cantidadVeces)
 
-        self.cursor.execute(sql, valores)        
+        self.cursor.execute(sql, valores)   
         self.conn.commit()
         return self.cursor.lastrowid
 
@@ -81,7 +81,7 @@ class Catalogo:
         return self.cursor.fetchone() #Me da el diccionario o None si no existe
 
     #----------------------------------------------------------------
-    def modificar_peliculas(self, codigo, nuevo_titulo, nuevo_genero, nueva_puntuacion, nueva_date, nueva_cantidadVeces):
+    def modificar_pelicula(self, codigo, nuevo_titulo, nuevo_genero, nueva_puntuacion, nueva_date, nueva_cantidadVeces):
         sql = "UPDATE peliculas SET titulo = %s, genero = %s, puntuacion = %s, date = %s, cantidadVeces = %s WHERE codigo = %s"
         valores = (nuevo_titulo, nuevo_genero, nueva_puntuacion, nueva_date, nueva_cantidadVeces, codigo)
         self.cursor.execute(sql, valores)
@@ -89,7 +89,7 @@ class Catalogo:
         return self.cursor.rowcount > 0
 
     #----------------------------------------------------------------
-    def listar_peliculas(self):
+    def listar_pelicula(self):
         self.cursor.execute("SELECT * FROM peliculas")
         peliculas = self.cursor.fetchall()
         return peliculas
@@ -139,8 +139,8 @@ RUTA_DESTINO = 'static/imagenes/'
 #La ruta Flask /películas con el método HTTP GET está diseñada para proporcionar los detalles de todos los productos almacenados en la base de datos.
 #El método devuelve una lista con todos las películas en formato JSON.
 @app.route("/peliculas", methods=["GET"])
-def listar_peliculas():
-    peliculas = catalogo.listar_peliculas()
+def listar_pelicula():
+    peliculas = catalogo.listar_pelicula()
     return jsonify(peliculas)
 
 
