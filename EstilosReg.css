@@ -13,126 +13,25 @@ section{
     background-position: center;
     background-size: cover;
 }
-
-.contenedor-centrado {
-    display:flex;
-    width: 100%;
-    justify-content: center;
-}
-/* .contenedor{
+.contenedor{
     position: relative;
-    width: 100%; 
+    width: 90%; 
     max-width: 450px;
-    border: 2px solid rgba(255, 255, 255, 0.37);
+    border: 2px solid rgba(255, 255, 255, .6);
     border-radius: 20px;
     padding: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(253, 252, 252, 0);
-    box-sizing: border-box;
-} */
-.container h1{
+    background-color: rgba(0, 0, 0, 0.5);
+    box-sizing: border-box; 
+}
+.contenedor h2{
     font-size: 2.3rem;
-    color:rgba(253, 252, 253, 0.97);
+    color: #fff;
     text-align: center;
-    position: relative;
-    border: 2px solid rgb(106, 90, 205);
-    border-radius: 20px;
-    padding: 20px;
-    top: -180px;
-    left: 500px;
-    display: flex;
 }
-
-form {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    /* font-size: 2.3rem; */
-    text-align: center;
-    color:rgba(253, 252, 253, 0.97);
-    /* background-color: #390e8c; */
-    border: 1px solid rgb(106, 90, 205);
-    border-radius: 5px;
-    margin-top: 100px;
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
-}
-
-table {
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 100px;
-    margin-right: 600px;
-    margin-top: 150px;
-    /* background-color: #390e8c; */
-    border: 1px solid rgb(106, 90, 205);
-    border-radius: 5px;
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-input[type="text"],
-input[type="number"],
-textarea {
-    width: 90%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #cccccc;
-    border-radius: 5px;
-}
-
-input[type="submit"] {
-    padding: 10px;
-    background-color: #007bff;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-input[type="submit"]:hover {
-    background-color: #0056b3;
-}
-
-button {
-    padding: 8px;
-    margin:4px;
-    background-color: #1d1a39;
-    color: #ffffff;
-    font-size: 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-a {
-    padding: 8px;
-    margin:4px;
-    background-color: white;
-    color: #1d1a39;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 85%;
-    font-weight: 800;
-}
-
-a:hover {
-    background-color: #1d1a39;
-    color:#f5f1f7
-}
-
-/* .InputYContenedor{
+.InputYContenedor{
     position: relative;
     margin: 30px 0;
     width: 100%; 
@@ -211,7 +110,7 @@ button:hover{
 }
 .registrarse p a:hover{
     text-decoration: underline;
-} */
+}
 
 /* Media Queries para Responsividad */
 

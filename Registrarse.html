@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuarios</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/1c99a179e3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="Registrarse.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav><a href="#"><p class="logo animate__animated animate__heartBeat">CINEGUÍA 360</p></a></nav>        
+        </div>
+    </header>
+    <main>
+        <div class="formulario">
+            <h1>Registro</h1>
+            <form name="formulario" action="/usuarios" method="POST">
+                <label for="correo">Correo electrónico:</label>
+                <input required type="email" placeholder="Ingrese su correo" name="correo" id="correo">
+                
+                <label for="usuario">Usuario:</label>
+                <input required type="text" placeholder="Ingrese su usuario" name="usuario" id="usuario" maxlength="10">
+                
+                <label for="contrasena">Contraseña:</label>
+                <input required type="password" placeholder="Ingrese su contraseña" name="contrasena" id="contrasena" maxlength="15">
+                
+                <label for="confirmarContrasena">Confirmar contraseña:</label>
+                <input required type="password" placeholder="Confirmar contraseña" name="confirmarContrasena" id="confirmarContrasena" maxlength="15">
+                
+                <div>
+                    <input type="button" value="Enviar" onclick="validarEnviar()">
+                </div>
+            </form>
+            <p id="error"></p>
+        </div>
+    </main>   
+    <script src="validacion.js"></script>
+</body>
+</html>

@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CineGuia360</title>
     <link rel="icon" href="img/Icono/icono360.ico">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="EstilosReg.css">
+    <link rel="stylesheet" href="Estilo_Modificaciones.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-     
 </head>
 <body>
     <header>
@@ -19,86 +17,67 @@
             </p>
         </div>
     </header>
-<section>
-      <!-- Contenedor principal que será controlado por JavaScript. Este contenedor tendrá dos formularios. -->
-    <div id="app">
-        <!-- Primer formulario: Selector de producto. LLama a la función obtenerProducto cuando se envíe el formulario -->
-        <form id="form-obtener-pelicula">
-            <h2>Modificar películas</h2>
-            <label for="codigo">Código:</label>
-            <input type="text" id="codigo" required><br>
-            <button type="submit">Modificar Película</button> <a href="indexCineGuia360.html">Menu principal</a>
-        </form>
-
-        <!-- Segundo formulario: se muestra solo si mostrarDatosProducto es verdadero. Llama a la función guardarCambios -->
-        <div id="datos-pelicula" style="display: none;">
-            <h2>Datos de la Película</h2>
-            <form id="form-guardar-cambios">
-                <label for="tituloModificar">Título:</label>
-                <input type="text" id="tituloModificar" required><br>
-
-                <label for="generoModificar">Género:</label>
-                <input type="text" id="generoModificar" required><br>
-
-                <label for="puntuacionModificar">Puntuación:</label>
-                <input type="number" step="0.01" id="puntuacionModificar" required><br>
-
-                <label for="dateModificar">Fecha de estreno:</label>
-                <input type="date" id="date"><br>
-
-                <br>
-                <label for="cantidadVecesModificar">Cantidad de veces vista:</label>
-                <input type="number" id="cantidadVecesModificar" required><br>
-
-                <button type="submit">Guardar Cambios</button>
-                <a href="modificacionesCineGuia360.html">Cancelar</a>
+    <section>
+        <div id="app">
+            <form id="form-obtener-pelicula">
+                <h2>Modificar películas</h2>
+                <label for="codigo">Código:</label>
+                <input type="text" id="codigo" required><br>
+                <button type="submit">Modificar Película</button> 
+                <a href="indexCineGuia360.html">Menu principal</a>
             </form>
+            <div id="datos-pelicula" style="display: none;">
+                <h2>Datos de la Película</h2>
+                <form id="form-guardar-cambios">
+                    <label for="tituloModificar">Título:</label>
+                    <input type="text" id="tituloModificar" required><br>
+                    <label for="generoModificar">Género:</label>
+                    <input type="text" id="generoModificar" required><br>
+                    <label for="puntuacionModificar">Puntuación:</label>
+                    <input type="number" step="0.01" id="puntuacionModificar" required><br>
+                    <label for="dateModificar">Fecha de estreno:</label>
+                    <input type="date" id="dateModificar"><br><br>
+                    <label for="cantidadVecesModificar">Cantidad de veces vista:</label>
+                    <input type="number" id="cantidadVecesModificar" required><br>
+                    <button type="submit">Guardar Cambios</button>
+                    <a href="modificacionesCineGuia360.html">Cancelar</a>
+                </form>
+            </div>
         </div>
-    </div>
-
-</section>
+    </section>
     <script>
-        // const URL = "http://127.0.0.1:5000/"
+        const URL = "http://127.0.0.1:5000/";
+        // const URL = "https://USUARIO.pythonanywhere.com/";
 
-        // Al subir al servidor, deberá utilizarse la siguiente ruta. USUARIO debe ser reemplazado por el nombre de usuario de Pythonanywhere
-        //const URL = "https://USUARIO.pythonanywhere.com/"
-
-        // Variables de estado para controlar la visibilidad y los datos del formulario
         let codigo = '';
         let titulo = '';
         let genero = '';
         let puntuacion = '';
         let date = '';
-        let cantidadVeces= '';
-        // let imagen_url = '';
-        // let imagenSeleccionada = null;
-        // let imagenUrlTemp = null;
+        let cantidadVeces = '';
         let mostrarDatosPelicula = false;
 
         document.getElementById('form-obtener-pelicula').addEventListener('submit', obtenerPelicula);
         document.getElementById('form-guardar-cambios').addEventListener('submit', guardarCambios);
-        // document.getElementById('nuevaImagen').addEventListener('change', seleccionarImagen);
 
-        // Se ejecuta cuando se envía el formulario de consulta. Realiza una solicitud GET a la API y obtiene los datos de la película correspondiente al código ingresado.
         function obtenerPelicula(event) {
             event.preventDefault();
             codigo = document.getElementById('codigo').value;
             fetch(URL + 'peliculas/' + codigo)
                 .then(response => {
                     if (response.ok) {
-                        return response.json()
+                        return response.json();
                     } else {
-                        throw new Error('Error al obtener los datos de la pelicula.')
+                        throw new Error('Error al obtener los datos de la pelicula.');
                     }
                 })
                 .then(data => {
                     titulo = data.titulo;
                     genero = data.genero;
                     puntuacion = data.puntuacion;
-                    date = data.date;
-                    cantidadVeces = data.cantidadVeces;
-                    // imagen_url = data.imagen_url;
-                    mostrarDatosPelicula = true; //Activa la vista del segundo formulario
+                    date = data.fecha_estreno;
+                    cantidadVeces = data.cantidad_veces_vista;
+                    mostrarDatosPelicula = true;
                     mostrarFormulario();
                 })
                 .catch(error => {
@@ -106,7 +85,6 @@
                 });
         }
 
-        // Muestra el formulario con los datos de la película
         function mostrarFormulario() {
             if (mostrarDatosPelicula) {
                 document.getElementById('tituloModificar').value = titulo;
@@ -114,89 +92,50 @@
                 document.getElementById('puntuacionModificar').value = puntuacion;
                 document.getElementById('dateModificar').value = date;
                 document.getElementById('cantidadVecesModificar').value = cantidadVeces;
-
-                // const imagenActual = document.getElementById('imagen-actual');
-                // if (imagen_url && !imagenSeleccionada) { // Verifica si imagen_url no está vacía y no se ha seleccionado una imagen
-
-                //     imagenActual.src = './static/imagenes/' + imagen_url;                    
-                    
-                //     Al subir al servidor, deberá utilizarse la siguiente ruta. USUARIO debe ser reemplazado por el nombre de usuario de Pythonanywhere
-                //     imagenActual.src = 'https://www.pythonanywhere.com/user/USUARIO/files/home/USUARIO/mysite/static/imagenes/' + imagen_url;
-
-                //     imagenActual.style.display = 'block'; // Muestra la imagen actual
-                // } else {
-                //     imagenActual.style.display = 'none'; // Oculta la imagen si no hay URL
-                // }
-
                 document.getElementById('datos-pelicula').style.display = 'block';
             } else {
                 document.getElementById('datos-pelicula').style.display = 'none';
             }
         }
 
-        // Se activa cuando el usuario selecciona una imagen para cargar.
-        // function seleccionarImagen(event) {
-        //     const file = event.target.files[0];
-        //     imagenSeleccionada = file;
-        //     imagenUrlTemp = URL.createObjectURL(file); // Crea una URL temporal para la vista previa
-
-        //     const imagenVistaPrevia = document.getElementById('imagen-vista-previa');
-        //     imagenVistaPrevia.src = imagenUrlTemp;
-        //     imagenVistaPrevia.style.display = 'block';
-        // }
-
-        // Se usa para enviar los datos modificados de la película al servidor.
         function guardarCambios(event) {
             event.preventDefault();
 
             const formData = new FormData();
-            formData.append('codigo', codigo);
             formData.append('titulo', document.getElementById('tituloModificar').value);
             formData.append('genero', document.getElementById('generoModificar').value);
             formData.append('puntuacion', document.getElementById('puntuacionModificar').value);
             formData.append('date', document.getElementById('dateModificar').value);
-            formData.append('cantidadVeces', document.getElementById('cantidadVecesModificar').value);      
-
-            // Si se ha seleccionado una imagen nueva, la añade al formData.
-            if (imagenSeleccionada) {
-                formData.append('imagen', imagenSeleccionada, imagenSeleccionada.name);
-            }
+            formData.append('cantidadVeces', document.getElementById('cantidadVecesModificar').value);
 
             fetch(URL + 'peliculas/' + codigo, {
                 method: 'PUT',
                 body: formData,
             })
-                .then(response => {
-                    if (response.ok) {
-                        return response.json()
-                    } else {
-                        throw new Error('Error al guardar los cambios de la pelicula.')
-                    }
-                })
-                .then(data => {
-                    alert('Pelicula actualizada correctamente.');
-                    limpiarFormulario();
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Error al actualizar la pelicula.');
-                });
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Error al guardar los cambios de la pelicula.');
+                }
+            })
+            .then(data => {
+                alert('Película actualizada correctamente.');
+                limpiarFormulario();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error al actualizar la pelicula.');
+            });
         }
 
-        // Restablece todas las variables relacionadas con el formulario a sus valores iniciales, lo que efectivamente "limpia" el formulario.
         function limpiarFormulario() {
             document.getElementById('codigo').value = '';
             document.getElementById('tituloModificar').value = '';
             document.getElementById('generoModificar').value = '';
             document.getElementById('puntuacionModificar').value = '';
             document.getElementById('dateModificar').value = '';
-            document.getElementById('cantidadVecesModifcar').value = '';
-
-            const imagenActual = document.getElementById('imagen-actual');
-            imagenActual.style.display = 'none';
-
-            const imagenVistaPrevia = document.getElementById('imagen-vista-previa');
-            imagenVistaPrevia.style.display = 'none';
+            document.getElementById('cantidadVecesModificar').value = '';
 
             codigo = '';
             titulo = '';
@@ -204,14 +143,10 @@
             puntuacion = '';
             date = '';
             cantidadVeces = '';
-            // imagen_url = '';
-            // imagenSeleccionada = null;
-            // imagenUrlTemp = null;
-            // mostrarDatosProducto = false;
+            mostrarDatosPelicula = false;
 
             document.getElementById('datos-pelicula').style.display = 'none';
         }
     </script>
 </body>
-
 </html>
