@@ -94,7 +94,7 @@ class Catalogo:
         else:
             print("Pelicula no encontrada.")
 
-catalogo = Catalogo(host='localhost', user='root', password='', database='miapp')
+catalogo = Catalogo(host='localhost', user='root', password='', database='peliculas')
 
 @app.route("/peliculas", methods=["GET"])
 def listar_pelicula():
