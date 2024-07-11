@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mostrar Usuarios - CINEGUÍA 360</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <p class="logo animate__heartBeat">
+                <a href="index.html">CINEGUÍA 360</a>
+            </p>
+            <nav class="navbar">
+                <a href="Login.html">Login</a>
+                <a href="Registrarse.html">Registro</a>
+                <a href="#sobre-nosotros">Sobre Nosotros</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="usuarios">
+        <div class="container">
+            <h2>Usuarios Registrados</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Correo</th>
+                        <th>Usuario</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="lista-usuarios">
+                    <!-- Aquí se llenará dinámicamente la lista de usuarios -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>codo a codo 2024</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="mostrar_usuarios.js"></script>
+</body>
+</html>
