@@ -35,15 +35,11 @@ class Catalogo:
         self.cursor.close()
         self.cursor = self.conn.cursor(dictionary=True)
 
-<<<<<<< HEAD
-        self.cursor.execute(sql, valores)   
-=======
     def agregar_pelicula(self, titulo, genero, puntuacion, fecha_estreno, cantidad_veces_vista):
         sql = """INSERT INTO peliculas (titulo, genero, puntuacion, fecha_estreno, cantidad_veces_vista)
                  VALUES (%s, %s, %s, %s, %s)"""
         valores = (titulo, genero, puntuacion, fecha_estreno, cantidad_veces_vista)
         self.cursor.execute(sql, valores)        
->>>>>>> 11702455211d4a445d200dd5308f1ed553701b5e
         self.conn.commit()
         return self.cursor.lastrowid
 
@@ -51,27 +47,15 @@ class Catalogo:
         self.cursor.execute("SELECT * FROM peliculas WHERE codigo = %s", (codigo,))
         return self.cursor.fetchone()
 
-<<<<<<< HEAD
-    #----------------------------------------------------------------
-    def modificar_pelicula(self, codigo, nuevo_titulo, nuevo_genero, nueva_puntuacion, nueva_date, nueva_cantidadVeces):
-        sql = "UPDATE peliculas SET titulo = %s, genero = %s, puntuacion = %s, date = %s, cantidadVeces = %s WHERE codigo = %s"
-        valores = (nuevo_titulo, nuevo_genero, nueva_puntuacion, nueva_date, nueva_cantidadVeces, codigo)
-=======
     def modificar_peliculas(self, codigo, nuevo_titulo, nuevo_genero, nueva_puntuacion, nueva_fecha_estreno, nueva_cantidad_veces_vista):
         sql = """UPDATE peliculas SET titulo = %s, genero = %s, puntuacion = %s, fecha_estreno = %s, cantidad_veces_vista = %s 
                  WHERE codigo = %s"""
         valores = (nuevo_titulo, nuevo_genero, nueva_puntuacion, nueva_fecha_estreno, nueva_cantidad_veces_vista, codigo)
->>>>>>> 11702455211d4a445d200dd5308f1ed553701b5e
         self.cursor.execute(sql, valores)
         self.conn.commit()
         return self.cursor.rowcount > 0
 
-<<<<<<< HEAD
-    #----------------------------------------------------------------
-    def listar_pelicula(self):
-=======
     def listar_peliculas(self):
->>>>>>> 11702455211d4a445d200dd5308f1ed553701b5e
         self.cursor.execute("SELECT * FROM peliculas")
         return self.cursor.fetchall()
 
@@ -94,22 +78,13 @@ class Catalogo:
         else:
             print("Pelicula no encontrada.")
 
-catalogo = Catalogo(host='localhost', user='root', password='', database='peliculas')
+catalogo = Catalogo(host='localhost', user='root', password='', database='miapp')
 
 @app.route("/peliculas", methods=["GET"])
-def listar_pelicula():
-    peliculas = catalogo.listar_pelicula()
+def listar_peliculas():
+    peliculas = catalogo.listar_peliculas()
     return jsonify(peliculas)
 
-<<<<<<< HEAD
-
-#--------------------------------------------------------------------
-# Mostrar una sola película según su código
-#--------------------------------------------------------------------
-#La ruta Flask /peliculas/<int:codigo> con el método HTTP GET está diseñada para proporcionar los detalles de una película específica basado en su código.
-#El método busca en la base de datos la pelicula con el código especificado y devuelve un JSON con los detalles de la pelicula si la encuentra, o None si no la encuentra.
-=======
->>>>>>> 11702455211d4a445d200dd5308f1ed553701b5e
 @app.route("/peliculas/<int:codigo>", methods=["GET"])
 def mostrar_pelicula(codigo):
     pelicula = catalogo.consultar_pelicula(codigo)
@@ -133,11 +108,6 @@ def agregar_pelicula():
         return jsonify({"mensaje": "Error al agregar la película"}), 500
 
 @app.route("/peliculas/<int:codigo>", methods=["PUT"])
-<<<<<<< HEAD
-#La ruta Flask /peliculas/<int:codigo> con el método HTTP PUT está diseñada para actualizar la información de una película existente en la base de datos, identificado por su código.
-#La función modificar_película se asocia con esta URL y es invocada cuando se realiza una solicitud PUT a /películas/ seguido de un número (el código de la película).
-=======
->>>>>>> 11702455211d4a445d200dd5308f1ed553701b5e
 def modificar_pelicula(codigo):
     nuevo_titulo = request.form.get("titulo")
     nuevo_genero = request.form.get("genero")
