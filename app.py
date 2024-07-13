@@ -3,7 +3,7 @@ from flask_cors import CORS
 import mysql.connector
 
 app = Flask(__name__)
-CORS(app)  
+CORS(app)
 
 class Catalogo:
 
@@ -78,7 +78,9 @@ class Catalogo:
         else:
             print("Pelicula no encontrada.")
 
-catalogo = Catalogo(host='localhost', user='root', password='', database='miapp')
+# catalogo = Catalogo(host='localhost', user='root', password='', database='peliculas')
+catalogo = Catalogo(host='Rosi.mysql.pythonanywhere-services.com', user='Rosi', password='8910laptop', database='Rosi$peliculas')
+
 
 @app.route("/peliculas", methods=["GET"])
 def listar_peliculas():
